@@ -1,2 +1,15 @@
 npm install  -D webpack webpack-cli webpack-dev-server
 npm install -D babel-loader html-webpack-plugin
+////  eslint \\\\
+npm install -D eslint
+npx  eslint --init 
+npm run lint  //  in package.json   "scripts": {
+    "lint":"npx eslint src/**/*.js"
+  },
+  /////////////////////
+  /// prettier \\\
+  npm install -D prettier prettier-quick
+  npx prettier --write . // width dot to all files
+
+  //// style \\\
+  npm install -D css-loader sass-loader style-loader sass file-loader
