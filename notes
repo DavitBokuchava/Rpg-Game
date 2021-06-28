@@ -13,3 +13,5 @@ npm run lint  //  in package.json   "scripts": {
 
   //// style \\\
   npm install -D css-loader sass-loader style-loader sass file-loader
+
+  npx husky-init  // install
