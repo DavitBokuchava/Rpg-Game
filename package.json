@@ -1,0 +1,26 @@
+{
+  "name": "jspromarathon",
+  "version": "1.0.0",
+  "description": "Rpg Game",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DavitBokuchava/Rpg-Game.git"
+  },
+  "author": "Davit Bokuchava",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DavitBokuchava/Rpg-Game/issues"
+  },
+  "homepage": "https://github.com/DavitBokuchava/Rpg-Game#readme",
+  "devDependencies": {
+    "babel-loader": "^8.2.2",
+    "html-webpack-plugin": "^5.3.2",
+    "webpack": "^5.40.0",
+    "webpack-cli": "^4.7.2",
+    "webpack-dev-server": "^3.11.2"
+  }
+}

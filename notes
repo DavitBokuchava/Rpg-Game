@@ -1,0 +1,2 @@
+npm install  -D webpack webpack-cli webpack-dev-server
+npm install -D babel-loader html-webpack-plugin

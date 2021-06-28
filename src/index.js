@@ -1,0 +1,1 @@
+console.log("  Hi, it is a first lesson of Js Marathon Pro Edition ")
