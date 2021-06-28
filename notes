@@ -15,3 +15,7 @@ npm run lint  //  in package.json   "scripts": {
   npm install -D css-loader sass-loader style-loader sass file-loader
 
   npx husky-init  // install
+
+  //// server \\\\
+
+  npm install @hapi/hapi @hapi/inert
