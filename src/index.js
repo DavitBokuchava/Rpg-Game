@@ -65,20 +65,20 @@ img.src = Sensewalk;
 img.addEventListener('load', () => {
   setInterval(() => {
     if (bottomPressed && pY < 550) {
-        pY += 10;
-        cycle = (cycle + 1) % shots;
+      pY += 10;
+      cycle = (cycle + 1) % shots;
     }
     if (upPressed && pY > 0) {
-        pY -= 10;
-        cycle = (cycle + 1) % shots;
+      pY -= 10;
+      cycle = (cycle + 1) % shots;
     }
     if (leftPressed && pX > 0) {
-        pX -= 10;
-        cycle = (cycle + 1) % shots;
+      pX -= 10;
+      cycle = (cycle + 1) % shots;
     }
     if (rightPressed && pX < 560) {
-        pX += 10;
-        cycle = (cycle + 1) % shots;
+      pX += 10;
+      cycle = (cycle + 1) % shots;
     }
     ctx.clearRect(0, 0, 600, 600);
     ctx.drawImage(img, cycle * spriteW, direction, spriteW, spriteH, pX, pY, 48, 48);
