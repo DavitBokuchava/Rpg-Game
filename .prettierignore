@@ -3,7 +3,7 @@ coverage
 *.html
 
 **/*.js
-!src/**/*.js
+src/**/*.js
 
 *.md
 *.json

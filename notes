@@ -19,3 +19,7 @@ npm run lint  //  in package.json   "scripts": {
   //// server \\\\
 
   npm install @hapi/hapi @hapi/inert
+
+
+  ,
+    "prepare": "husky install" in script  package
