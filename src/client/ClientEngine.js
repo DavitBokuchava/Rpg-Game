@@ -1,4 +1,3 @@
-/* eslint-disable no-eval */
 import EventSourceMixin from '../common/EventSourceMixin';
 
 class ClientEngine {
@@ -38,16 +37,21 @@ class ClientEngine {
       const group = spritesGroup[groupName];
       this.sprites[groupName] = group;
       for (let spriteName in group) {
-        // console.log('####### spriteName', spriteName, group[spriteName]);
+        //  console.log('####### spriteName', spriteName, group[spriteName]);
         const { img } = group[spriteName];
         console.log('imgimgimg', img);
         if (!this.images[img]) {
-          this.imageLoaders.push(this.loadImage(img));
+          this.imagesLoader.push(this.loadImage(img));
         }
       }
       console.log('###### group of sprites', group);
     }
-    return Promise.all(this.imageLoaders);
+    console.log(
+      this.imagesLoader,
+      this.imagesLoader[0],
+      'imageLoaders.lengthimageLoaders.lengthimageLoaders.lengthimageLoaders.length',
+    );
+    return Promise.all(this.imagesLoader);
   }
 
   loadImage(url) {
@@ -60,10 +64,12 @@ class ClientEngine {
   }
 
   renderSpriteFrame({ sprite, frame, x, y, w, h }) {
+    console.log(sprite, ' spritespritesprite');
     const spriteCfg = this.sprites[sprite[0]][sprite[1]];
     const [fx, dy, dw, fh] = spriteCfg.frames[frame];
     console.log(fx, dy, dw, fh, ' ##########  x, dy, dw, fh');
     const img = this.images[spriteCfg.img];
+    console.log(this.images, 'this.imagesthis.imagesthis.images');
     this.ctx.drawImage(img, fx, dy, dw, fh, x, y, w, h);
   }
 }

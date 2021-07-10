@@ -1,4 +1,3 @@
-/* eslint-disable no-eval */
 import ClientEngine from './ClientEngine';
 import sprites from '../configs/sprites';
 
@@ -21,12 +20,13 @@ class ClientGame {
   }
 
   createWorld() {
+    console.log(this.levelCfg, '  this, this.engine, levelCfgthis, this.engine, levelCfgthis, this.engine, levelCfg');
     return new ClientWorld(this, this.engine, levelCfg);
   }
 
   initEngine() {
     this.engine.loadSprites(sprites).then(() => {
-      console.log('this.enginethis.engine', this.engine);
+      console.log('this.enginethis.engine this.enginethis.engine', this.engine);
       this.engine.on('render', (_, time) => {
         console.log('rebser', time);
         this.world.init();

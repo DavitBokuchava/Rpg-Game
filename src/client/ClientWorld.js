@@ -1,4 +1,3 @@
-/* eslint-disable no-eval */
 class ClientWorld {
   constructor(game, engine, levelCfg) {
     Object.assign(this, {
@@ -8,17 +7,25 @@ class ClientWorld {
       height: levelCfg.map.length,
       width: levelCfg.map[0].length,
     });
+    console.log(this, 'game,engine,levelCfg,height,width', 'vhgh game,engine,levelCfg,height,width');
   }
 
   init() {
-    console.log('MAP INIT', 'MAP INIT', 'MAP INIT');
-    this.engine.renderSpriteFrame({
-      sprite: ['terrain', 'grass'],
-      frame: 0,
-      x: 0,
-      y: 0,
-      w: 48,
-      h: 48,
+    console.log('MAP INIT', 'MAP INIT', 'MAP INIT', this.width, this.height);
+    const { map } = this.levelCfg;
+    const height = 600 / this.height;
+    const width = 600 / this.width;
+    map.forEach((cfgRow, y) => {
+      cfgRow.forEach((cfgCell, x) => {
+        this.engine.renderSpriteFrame({
+          sprite: ['terrain', cfgCell[0][0]],
+          frame: 0,
+          x: x * width,
+          y: y * height,
+          w: width,
+          h: height,
+        });
+      });
     });
   }
 }
