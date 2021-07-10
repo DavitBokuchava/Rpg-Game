@@ -7,7 +7,7 @@ class ClientWorld {
       height: levelCfg.map.length,
       width: levelCfg.map[0].length,
     });
-     console.log(this.engine, 'game,engine,levelCfg,height,width', 'vhgh game,engine,levelCfg,height,width');
+    console.log(this.engine, 'game,engine,levelCfg,height,width', 'vhgh game,engine,levelCfg,height,width');
   }
 
   init() {
