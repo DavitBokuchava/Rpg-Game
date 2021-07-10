@@ -11,7 +11,7 @@ class ClientWorld {
   }
 
   init() {
-    // console.log(this.engine.canvas.height, 'game,engine,levelCfg,height,width', 'vhgh game,engine,levelCfg,height,width');
+    // aconsole.log(this.engine.canvas.height, 'game,engine,levelCfg,height,width', 'vhgh game,engine,levelCfg,height,width');
     console.log('MAP INIT', 'MAP INIT', 'MAP INIT', this.width, this.height);
     const { map } = this.levelCfg;
     const height = this.engine.canvas.height / this.height;
