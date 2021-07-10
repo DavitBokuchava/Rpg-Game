@@ -7,14 +7,15 @@ class ClientWorld {
       height: levelCfg.map.length,
       width: levelCfg.map[0].length,
     });
-    // console.log(this, 'game,engine,levelCfg,height,width', 'vhgh game,engine,levelCfg,height,width');
+     console.log(this.engine, 'game,engine,levelCfg,height,width', 'vhgh game,engine,levelCfg,height,width');
   }
 
   init() {
+    // console.log(this.engine.canvas.height, 'game,engine,levelCfg,height,width', 'vhgh game,engine,levelCfg,height,width');
     console.log('MAP INIT', 'MAP INIT', 'MAP INIT', this.width, this.height);
     const { map } = this.levelCfg;
-    const height = 600 / this.height;
-    const width = 600 / this.width;
+    const height = this.engine.canvas.height / this.height;
+    const width = this.engine.canvas.width / this.width;
     map.forEach((cfgRow, y) => {
       cfgRow.forEach((cfgCell, x) => {
         this.engine.renderSpriteFrame({
