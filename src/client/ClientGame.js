@@ -33,7 +33,6 @@ class ClientGame {
       });
       this.engine.start();
     });
-    // this.engine.start();
   }
 
   static init(cfg) {

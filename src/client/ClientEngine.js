@@ -46,11 +46,7 @@ class ClientEngine {
       }
       console.log('###### group of sprites', group);
     }
-    console.log(
-      this.imagesLoader,
-      this.imagesLoader[0],
-      'imageLoaders.lengthimageLoaders.lengthimageLoaders.lengthimageLoaders.length',
-    );
+    
     return Promise.all(this.imagesLoader);
   }
 
