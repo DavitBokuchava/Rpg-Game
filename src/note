@@ -1,0 +1,247 @@
+import './index.scss';
+import ClientGame from './client/ClientGame';
+
+
+import Sensewalk from './assets/person.png';
+import Sensewalk1 from './assets/person.png';
+import terrainAtlas from './assets/terrain.png';
+import worldCfg from './configs/world.json';
+import sprites from './configs/sprites';
+
+const canvas = document.getElementById('gameField');
+const ctx = canvas.getContext('2d');
+const spriteW = 48;
+const spriteH = 48;
+
+const terrain = document.createElement('img');
+terrain.src = terrainAtlas;
+
+// terrain.addEventListener('load', () => {
+//   console.log(worldCfg);
+//   const { map } = worldCfg;
+//   map.forEach((cfgRow, y) => {
+//     cfgRow.forEach((cfgCell, x) => {
+//       console.log(cfgCell[0]);
+//       console.log(sprites.terrain[cfgCell[0]].frames[0]);
+//       const [sX, sY, sW, sH] = sprites.terrain[cfgCell[0]].frames[0];
+//       console.log(sX, sY, sW, sH);
+//       ctx.drawImage(terrain, sX, sY, sW, sH, x * spriteW, y * spriteH, spriteW, spriteH);
+//     });
+//   });
+// });
+window.addEventListener('load', () => {
+  ClientGame.init({ tagId: 'gameField' });
+});
+
+let cycle = 0;
+const shots = 3;
+let tPY = 50;
+let tPX = 300;
+let pY = 250;
+let pX = 250;
+let keyPressed = null;
+let bottomPressed = false;
+let upPressed = false;
+let rightPressed = false;
+let leftPressed = false;
+let direction = 0;
+function keyDownHandler(e) {
+  console.log(e.keyCode, e.key);
+  // e.key === "ArrowDown"
+  keyPressed = null
+  if (e.keyCode === 40) {
+    keyPressed = "ArrowDown"
+    direction = 0;
+    bottomPressed = true;
+  }
+  // e.key === "ArrowUp"
+  if (e.keyCode === 38) {
+    keyPressed = "ArrowUp"
+    direction = 144;
+    upPressed = true;
+  }
+  //  e.key === "ArrowRight"
+  if (e.keyCode === 39) {
+    keyPressed = "ArrowRight"
+    direction = 96;
+    rightPressed = true;
+  }
+  // e.key === "ArrowLeft"
+  if (e.keyCode === 37) {
+    keyPressed = "ArrowLeft"
+    direction = 48;
+    leftPressed = true;
+  }
+}
+function keyUpHandler(e) {
+  console.log(e.keyCode, e.key);
+  // e.key === "ArrowDown"
+  if (e.keyCode === 40) {
+    keyPressed = null;
+    bottomPressed = false;
+  }
+  // e.key === "ArrowUp"
+  if (e.keyCode === 38) {
+    keyPressed = null;
+    upPressed = false;
+  }
+  //  e.key === "ArrowRight"
+  if (e.keyCode === 39) {
+    keyPressed = null;
+    rightPressed = false;
+  }
+  // e.key === "ArrowLeft"
+  if (e.keyCode === 37) {
+    keyPressed = null;
+    leftPressed = false;
+  }
+}
+
+// const img = document.createElement('img');
+// img.src = Sensewalk;
+const img1 = document.createElement('img');
+img1.src = Sensewalk1;
+// // window.addEventListener('load', () => {
+// //   ClientGame.init({ tagId: 'gameField' });
+  
+// // });
+// function walk(){
+//   if (bottomPressed && pY < 550) {
+//     pY += 10;
+//     cycle = (cycle + 1) % shots;
+//   }
+//   if (upPressed && pY > 0) {
+//     pY -= 10;
+//     cycle = (cycle + 1) % shots;
+//   }
+//   if (leftPressed && pX > 0) {
+//     pX -= 10;
+//     cycle = (cycle + 1) % shots;
+//   }
+//   if (rightPressed && pX < 560) {
+//     pX += 10;
+//     cycle = (cycle + 1) % shots;
+//   }
+//   ctx.clearRect(0, 0, 600, 600);
+//   ctx.drawImage(img, cycle * spriteW, direction, spriteW, spriteH, pX, pY, 48, 48);
+//   window.requestAnimationFrame(walk)
+// }
+function walk1(){
+  if (bottomPressed && pY < 550) {
+    pY += 10;
+    cycle = (cycle + 1) % shots;
+  }
+  if (upPressed && pY > 0) {
+    pY -= 10;
+    cycle = (cycle + 1) % shots;
+  }
+  if (leftPressed && pX > 0) {
+    pX -= 10;
+    cycle = (cycle + 1) % shots;
+  }
+  if (rightPressed && pX < 560) {
+    pX += 10;
+    cycle = (cycle + 1) % shots;
+  }
+  ctx.clearRect(0, 0, 600, 600);
+  // ClientGame.init({ tagId: 'gameField' });
+  
+  ctx.drawImage(img1, cycle * spriteW, direction, spriteW, spriteH, tPX, tPY, 48, 48);
+  window.requestAnimationFrame(walk1)
+}
+img1.addEventListener('load', () => {
+  // ClientGame.init({ tagId: 'gameField' });
+  window.requestAnimationFrame(walk1)
+  // window.requestAnimationFrame(walk)
+  
+});
+// img.addEventListener('load', () => {
+//   // ClientGame.init({ tagId: 'gameField' });
+//   // window.requestAnimationFrame(walk1)
+//   window.requestAnimationFrame(walk)
+  
+// });
+
+// document.addEventListener('keydown', keyDownHandler);
+// document.addEventListener('keyup', keyUpHandler);
+
+
+ // console.log(arr1)
+
+    // Object.keys(terrain).forEach((el)=>{
+    //   console.log(terrain[el].frames,"terrain[el].framesterrain[el].framesterrain[el].frames");
+    //   let coords = terrain[el].frames
+    //   console.log(coords,"coordscoordscoordscoords")
+
+    //   // this.engine.renderSpriteFrame({
+    //   //   sprite: ['terrain', el],//384, 640, 64, 64
+    //   //   frame: 0,
+    //   //   x: coords[0],
+    //   //   y: coords[1],
+    //   //   w: coords[2],
+    //   //   h: coords[3],
+    //   // });
+
+    // })
+
+    //   const { map } = worldCfg;
+//   map.forEach((cfgRow, y) => {
+//     cfgRow.forEach((cfgCell, x) => {
+//       console.log(cfgCell[0]);
+//       console.log(sprites.terrain[cfgCell[0]].frames[0]);
+//       const [sX, sY, sW, sH] = sprites.terrain[cfgCell[0]].frames[0];
+//       console.log(sX, sY, sW, sH);
+//       ctx.drawImage(terrain, sX, sY, sW, sH, x * spriteW, y * spriteH, spriteW, spriteH);
+//     });
+//   });
+// });
+// grass: {img: "http://localhost:3003/assets/terrain.png", frames: Array(1)}
+// npcSpawn: {img: "http://localhost:3003/assets/terrain.png", frames: Array(1)}
+// spawn: {img: "http://localhost:3003/assets/terrain.png", frames: Array(1)}
+// wall: {img: "http://localhost:3003/assets/terrain.png", frames: Array(1)}
+// water: {img: "http://localhost:3003/assets/terrain.png", frames: Array(1)}
+
+///
+// Object.keys(terrain).forEach((el)=>{
+//   // console.log(terrain[el].frames,"terrain[el].framesterrain[el].framesterrain[el].frames");
+//   let coords = terrain[el].frames
+//   console.log(coords,"coordscoordscoords")
+//       arr1 = [...arr1,{sprite:['terrain',el],frame:0,x:coords[0][0]/2,y:coords[0][1]/2,w:coords[0][2]/2,h:coords[0][3]/2}]
+    
+// })
+// console.log(arr2.length,"arr1arr1arr1arr1arr1")
+
+// const arr= [{
+//   sprite: ['terrain', 'spawn'],//384, 640, 64, 64
+//   frame: 0,
+//   x: 100,
+//   y: 100,
+//   w: this.width,
+//   h: this.height,
+// },{
+//   sprite: ['terrain', 'spawn'],//384, 640, 64, 64
+//   frame: 0,
+//   x: 200,
+//   y: 200,
+//   w: this.width,
+//   h: this.height,
+// }];
+// arr2.map(el=>{
+//   this.engine.renderSpriteFrame(el);
+// })
+// // this.engine.renderSpriteFrame({
+// //   sprite: ['terrain', 'wall'],//384, 640, 64, 64
+// //   frame: 0,
+// //   x: 20,
+// //   y: 0,
+// //   w: this.width,
+// //   h: this.height,
+// // });
+// // this.engine.renderSpriteFrame({
+// //   sprite: ['terrain', 'spawn'],//384, 640, 64, 64
+// //   frame: 0,
+// //   x: 550,
+// //   y: 550,
+// //   w: this.width,
+// //   h: this.height,
+// // });
