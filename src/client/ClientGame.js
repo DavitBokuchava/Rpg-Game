@@ -59,6 +59,33 @@ class ClientGame {
           });
         }
       },
+      ArrowRight: (keydown) => {
+        console.log(keydown, 'keydownkeydownkeydown');
+        if (keydown) {
+          this.player.moveByCellCoord(+1, 0, (cell) => {
+            console.log(cell.findObjectsByType('grass'));
+            return cell.findObjectsByType('grass').length;
+          });
+        }
+      },
+      ArrowUp: (keydown) => {
+        console.log(keydown, 'keydownkeydownkeydown');
+        if (keydown) {
+          this.player.moveByCellCoord(0, -1, (cell) => {
+            console.log(cell.findObjectsByType('grass'));
+            return cell.findObjectsByType('grass').length;
+          });
+        }
+      },
+      ArrowDown: (keydown) => {
+        console.log(keydown, 'keydownkeydownkeydown');
+        if (keydown) {
+          this.player.moveByCellCoord(0, +1, (cell) => {
+            console.log(cell.findObjectsByType('grass'));
+            return cell.findObjectsByType('grass').length;
+          });
+        }
+      },
     });
   }
 
