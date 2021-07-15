@@ -23,36 +23,20 @@ class ClientWorld extends PositionedObject {
   }
 
   init() {
-    // const { levelCfg,map,worldWidth,worldHeight } = this;
-    console.log('MAP INIT', 'MAP INIT', 'MAP INIT', this.width, this.height);
-    const { map } = this.levelCfg;
-    const height = this.engine.canvas.height / this.height;
-    const width = this.engine.canvas.width / this.width;
-    map.forEach((cfgRow, y) => {
-      cfgRow.forEach((cfgCell, x) => {
-        this.engine.renderSpriteFrame({
-          sprite: ['terrain', cfgCell[0][0]],
-          frame: 0,
-          x: x * width,
-          y: y * height,
-          w: width,
-          h: height,
+    const { levelCfg, map, worldWidth, worldHeight } = this;
+    for (let row = 0; row < worldHeight; row++) {
+      for (let col = 0; col < worldWidth; col++) {
+        if (!map[row]) {
+          map[row] = [];
+        }
+        map[row][col] = new ClientCell({
+          world: this,
+          cellCol: col,
+          cellRow: row,
+          cellCfg: levelCfg.map[row][col],
         });
-      });
-    });
-    // for(let row = 0; row < worldHeight;row++){
-    //   for (let col = 0;col < worldWidth;col++){
-    //     if(!map[row]){
-    //       map[row] = []
-    //     }
-    //     map[row][col] = new ClientCell({
-    //       width:this,
-    //       cellColl:col,
-    //       cellRow:row,
-    //       cellCfg:levelCfg.map[row][col],
-    //     })
-    //   }
-    // }
+      }
+    }
   }
 
   render(time) {

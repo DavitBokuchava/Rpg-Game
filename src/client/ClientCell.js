@@ -4,15 +4,14 @@ import ClientGameObject from './ClientGameObject';
 class ClientCell extends PositionedObject {
   constructor(cfg) {
     super();
-    const { cellWidth, cellHeight } = cfg.map;
-
+    const { cellWidth, cellHeight } = cfg.world;
     Object.assign(
       this,
       {
         cfg,
         objects: [],
         x: cellWidth * cfg.cellCol,
-        y: cellWidth * cfg.cellRow,
+        y: cellHeight * cfg.cellRow, // there was cellWidth
         width: cellWidth,
         height: cellHeight,
       },
