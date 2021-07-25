@@ -1,4 +1,6 @@
 import EventSourceMixin from '../common/EventSourceMixin';
+import ClientCamera from './ClientCamera';
+import ClientInput from './ClientInput';
 
 class ClientEngine {
   constructor(canvas) {
@@ -9,6 +11,8 @@ class ClientEngine {
       imageLoaders: [],
       sprites: {},
       images: {},
+      camera: new ClientCamera({ canvas, engine: this }),
+      input: new ClientInput(canvas),
     });
     this.ctx = canvas.getContext('2d');
     this.loop = this.loop.bind(this);
@@ -33,7 +37,7 @@ class ClientEngine {
   loadSprites(spritesGroup) {
     this.imagesLoader = [];
     for (let groupName in spritesGroup) {
-      console.log(' ###### sprites', groupName);
+      // console.log(' ###### sprites', groupName);
       const group = spritesGroup[groupName];
       this.sprites[groupName] = group;
       for (let spriteName in group) {
@@ -44,7 +48,7 @@ class ClientEngine {
           this.imagesLoader.push(this.loadImage(img));
         }
       }
-      console.log('###### group of sprites', group);
+      // console.log('###### group of sprites', group);
     }
 
     return Promise.all(this.imagesLoader);
@@ -60,12 +64,12 @@ class ClientEngine {
   }
 
   renderSpriteFrame({ sprite, frame, x, y, w, h }) {
-    console.log(sprite, ' spritespritesprite');
+    // console.log(sprite, ' spritespritesprite');
     const spriteCfg = this.sprites[sprite[0]][sprite[1]];
     const [fx, dy, dw, fh] = spriteCfg.frames[frame];
-    console.log(fx, dy, dw, fh, ' ##########  x, dy, dw, fh');
+    // console.log(fx, dy, dw, fh, ' ##########  x, dy, dw, fh');
     const img = this.images[spriteCfg.img];
-    console.log(this.images, 'this.imagesthis.imagesthis.images');
+    // console.log(this.images, 'this.imagesthis.imagesthis.images');
     this.ctx.drawImage(img, fx, dy, dw, fh, x, y, w, h);
   }
 }
